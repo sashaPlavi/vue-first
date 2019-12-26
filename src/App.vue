@@ -2,35 +2,44 @@
   <div id="app">
     <h1>helloo</h1>
     <HelloWorld msg="cao bre" />
+    <Todos v-bind:todos="todos" />
   </div>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
+import Todos from "./components/Todos.vue";
 import axios from "axios";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    HelloWorld,
+    Todos
+  },
+  data() {
+    return {
+      todos: []
+    };
   },
 
   created() {
     axios
       .get("https://jsonplaceholder.typicode.com/todos/?_limit=10")
-      .then(res => console.log(res))
+      .then(res => (this.todos = res.data))
       .catch(err => console.log(err));
   }
 };
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
 }
 </style>
