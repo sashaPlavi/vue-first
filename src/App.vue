@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <h1>helloo</h1>
+    <Header />
+
     <HelloWorld msg="cao bre" />
     <Todos v-bind:todos="todos" />
   </div>
@@ -9,13 +10,15 @@
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import Todos from "./components/Todos.vue";
+import Header from "./components/layout/Header.vue";
 import axios from "axios";
 
 export default {
   name: "app",
   components: {
     HelloWorld,
-    Todos
+    Todos,
+    Header
   },
   data() {
     return {
