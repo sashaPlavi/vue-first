@@ -34,6 +34,14 @@ export default {
         .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
         .then(res => {
           console.log(res.status);
+          const newarr = [];
+          for (let i = 0; i < this.todos.length; i++) {
+            if (this.todos[i].id !== id) {
+              newarr.push(this.todos[i]);
+            }
+          }
+          this.todos = newarr;
+          console.log(newarr);
         })
         .then(err => console.log(err));
     },
